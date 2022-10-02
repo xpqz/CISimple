@@ -1,0 +1,17 @@
+ testInputBundleDiscount_BuyOne_GetAnother
+⍝ Validate input format for Discount specification
+
+
+ specification←'Buy shirt, get pants at 50%'
+
+ ok←InputBundleDiscount specification
+
+ ⍎(~ok)/'⎕SIGNAL 99'
+
+⍝
+
+⍝res←InputBundleDiscount specification
+
+⍝specification←'Get 10% off if you''re a member'
+
+⍝res←InputBundleDiscount specification
