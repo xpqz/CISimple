@@ -30,7 +30,7 @@
 
  failedtests←0⍴''⍬
 
- _out'Executing ',(⍕⊃⍴testfunctions),' tests'
+ _out'Executing ',(⍕⊃⍴testfunctions),' test(s)'
  :For testfunction :In testfunctions
     testfunction _out'Executing'
     :Trap 0
