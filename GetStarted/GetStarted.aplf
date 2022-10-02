@@ -1,0 +1,3 @@
+ GetStarted
+ ⎕←'Hello World! '
+ ⎕←'Time is now. ', ⎕TS
