@@ -1,4 +1,4 @@
-UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfiles;testfolder;testfunctions;testfunction;failedtests
+UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfiles;testfolder;testfunctions;testfunction;failedtests;_getenv;_out
 ⍝0: Simple Unit Test runner written in pure APL no extras allowed.
 ⍝ ==================================================================================
 ⍝ ... Function expects environment variables poining to
