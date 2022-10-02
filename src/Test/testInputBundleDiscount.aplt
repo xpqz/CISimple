@@ -1,18 +1,20 @@
-testInputBundleDiscount
+ testInputBundleDiscount
 ⍝ Validate input format for Discount specification
 
-specification←'Buy one, get one free'
+ specification←'Buy one, get one free'
 
-res←InputBundleDiscount specification
+ ok←InputBundleDiscount specification
 
-specification←'Buy two get one free'
+ ⍎ok/'⎕SIGNAL 99'
 
-res←InputBundleDiscount specification
+⍝specification←'Buy two get one free'
 
-specification←'Buy shirt, get pants at 50%'
+⍝res←InputBundleDiscount specification
 
-res←InputBundleDiscount specification
+⍝specification←'Buy shirt, get pants at 50%'
 
-specification←'Get 10% off if you''re a member'
+⍝res←InputBundleDiscount specification
 
-res←InputBundleDiscount specification
+⍝specification←'Get 10% off if you''re a member'
+
+⍝res←InputBundleDiscount specification

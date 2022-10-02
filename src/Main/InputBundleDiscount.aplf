@@ -1,2 +1,29 @@
-res←InputBundleDiscount bundlediscout
+ ok←InputBundleDiscount bundlediscout;_m;inputtest;numbers;_skip;foundnumber;_d;buynumber;getnumber
+ ⍝ ... Assume that bundle discount either is in the form
+ ⍝ 'Buy <number-as-text>[ ,}]* get <number-as-text>'
+ ⍝
+ ⍝ Return ok = true for valid string
 
+ _m←{⍺≡(⊃⍴⍺)↑⍵}
+ _d←{(⊃⍴⍺)↓⍵}
+ _skip←{(∨\⍵∊' ,')/⍵}
+
+ ok←0
+
+ inputtest←⎕C bundlediscout
+ numbers←'one' 'two' 'three' 'four'
+ :If 'buy'_m inputtest
+    inputtest←_skip'buy'_d inputtest
+    foundnumber←numbers _m¨⊂inputtest
+ :AndIf ∨/foundnumber
+    buynumber←⊃foundnumber/numbers
+    inputtest←_skip buynumber _d inputtest
+ :AndIf 'get'_m inputtest
+    inputtest←_skip'get'_d inputtest
+    foundnumber←numbers _m¨⊂inputtest
+ :AndIf ∨/foundnumber
+    getnumber←⊃foundnumber/numbers
+    inputtest←_skip buynumber _d inputtest
+ :AndIf 0=⊃⍴inputtest
+    ok←1
+ :EndIf
