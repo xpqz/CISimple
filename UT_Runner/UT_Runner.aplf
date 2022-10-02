@@ -7,12 +7,12 @@ UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfi
 ⍝ ...    TestFolder: Load all test functions (with the extension) '*.aplt'.
 ⍝ ...                Folder and subfodlers are scanned
 ⍝ ==================================================================================
+ _getenv←{+2 ⎕NQ # 'GetEnvironment' ⍵}
+ mainfolder←_getenv 'MainFolder'
 
- mainfolder←⎕DQ'GetEnvironment' 'MainFolder'
+ testfolder←_getenv 'TestFolder'
 
- testfolder←⎕DQ'GetEnvironment' 'TestFolder'
-
- _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse'recurse)⊢⍺,'/*.',⍵}
+ _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse'1)⊢⍺,'/*.',⍵}
  _fixfiles←{⊃,/2 #.⎕FIX¨(⊂'file://'),¨⍵}
  _out←{⍺←'' ⋄ ⍺ ⎕TS ⍵}
 
