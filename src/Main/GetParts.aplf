@@ -1,0 +1,3 @@
+ parts←GetParts
+ ⍝ ... Return (discount) parts 
+parts←''
