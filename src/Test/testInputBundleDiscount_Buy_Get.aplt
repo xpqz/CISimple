@@ -5,13 +5,13 @@
 
  ok←InputBundleDiscount specification
 
- ⍎ok/'⎕SIGNAL 99'
+ ⍎(~ok)/'⎕SIGNAL 99'
 
  specification←'Buy two get one free'
 
  ok←InputBundleDiscount specification
 
- ⍎ok/'⎕SIGNAL 99'
+ ⍎(~ok)/'⎕SIGNAL 99'
 
 ⍝specification←'Buy shirt, get pants at 50%'
 
