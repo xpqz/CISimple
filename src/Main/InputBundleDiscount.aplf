@@ -1,6 +1,7 @@
  ok←InputBundleDiscount bundlediscount;_m;inputtest;numbers;_skip;foundnumber;_d;buynumber;getnumber;parts;foundpart;buypart;getpart;match
  ⍝ ... Assume that bundle discount either is in the form
- ⍝ 'Buy <number-as-text>[ ,}]* get <number-as-text>'
+ ⍝ 'Buy <number-as-text>[ ,}]* get <number-as-text> free'
+ ⍝ 'Buy <part>[ ,}]* get <part> at <pct>%'
  ⍝
  ⍝ Return ok = true for valid string
 
