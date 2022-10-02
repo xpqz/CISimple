@@ -1,3 +1,18 @@
  GetStarted
  ⎕←'Hello World! '
  ⎕←'Time is now. ', ⎕TS
+
+_getenv←{+2 ⎕NQ # 'GetEnvironment' ⍵}
+
+env←_getenv 'MainFolder'
+⎕←'Main Folder: ',env
+
+env←_getenv 'TestFolder'
+⎕←'Test Folder: ',env
+ 
+_loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse'1)⊢⍺,'/*.',⍵} 
+
+mainfiles←'/app' _loadfiles '*'
+
+⎕←'Main Folder Files: ',0≠⊃⍴mainfiles   
+⎕←⊃⎕NINFO⍠('Wildcard' 1)('Recurse'1)⊢'/app/' '*'
