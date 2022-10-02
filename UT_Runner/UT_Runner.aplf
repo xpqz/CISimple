@@ -1,4 +1,4 @@
-UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfiles;testfolder;testfunctions;testfunction;failedtests;_getenv;_out
+ UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfiles;testfolder;testfunctions;testfunction;failedtests;_getenv;_out
 ⍝0: Simple Unit Test runner written in pure APL no extras allowed.
 ⍝ ==================================================================================
 ⍝ ... Function expects environment variables poining to
@@ -7,13 +7,13 @@ UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfi
 ⍝ ...    TestFolder: Load all test functions (with the extension) '*.aplt'.
 ⍝ ...                Folder and subfodlers are scanned
 ⍝ ==================================================================================
- _getenv←{+2 ⎕NQ # 'GetEnvironment' ⍵}
- mainfolder←_getenv 'MainFolder'
+ _getenv←{+2 ⎕NQ #'GetEnvironment'⍵}
+ mainfolder←_getenv'MainFolder'
 
- testfolder←_getenv 'TestFolder'
+ testfolder←_getenv'TestFolder'
 
- _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse'1)⊢⍺,'/*.',⍵}
- _fixfiles←{⊃,/2 #.⎕FIX¨(⊂'file://'),¨⍵}
+ _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}
+ _fixfiles←{0=⊃⍴⍵:⍵ ⋄ ⊃,/2 #.⎕FIX¨(⊂'file://'),¨⍵}
  _out←{⍺←'' ⋄ ⍺ ⎕TS ⍵}
 
 ⍝_________________________________
