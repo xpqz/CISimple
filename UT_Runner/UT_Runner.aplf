@@ -1,0 +1,49 @@
+UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfiles;testfolder;testfunctions;testfunction;failedtests
+⍝0: Simple Unit Test runner written in pure APL no extras allowed.
+⍝ ==================================================================================
+⍝ ... Function expects environment variables poining to
+⍝ ...    MainFolder: Location of main (application) files - all files with extension
+⍝ ...                '*.aplf' will be loaded from that folder (and all subfolders)
+⍝ ...    TestFolder: Load all test functions (with the extension) '*.aplt'.
+⍝ ...                Folder and subfodlers are scanned
+⍝ ==================================================================================
+ _getenv←{+2 ⎕NQ # 'GetEnvironment' ⍵}
+ mainfolder←_getenv 'MainFolder'
+
+ testfolder←_getenv 'TestFolder'
+
+ _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse'1)⊢⍺,'/*.',⍵}
+ _fixfiles←{⊃,/2 #.⎕FIX¨(⊂'file://'),¨⍵}
+ _out←{⍺←'' ⋄ ⍺ ⎕TS ⍵}
+
+⍝_________________________________
+⍝ ... Load main (application) code
+⍝¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ mainfiles←mainfolder _loadfiles'aplf'
+ mainfunctions←_fixfiles mainfiles
+
+⍝____________________
+⍝ ... Load test code:
+⍝¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ testfiles←testfolder _loadfiles'aplt'
+ testfunctions←_fixfiles testfiles
+
+ failedtests←0⍴''⍬
+
+ _out'Executing ',(⍕⊃⍴testfunctions),' tests'
+ :For testfunction :In testfunctions
+    testfunction _out'Executing'
+    :Trap 0
+       ⍎testfunction
+    :Else
+       dmx←⎕DMX
+       testfunction _out'Failed'
+       testfunction _out dmx
+       failedtests,←⊂testfunction dmx
+    :EndTrap
+ :EndFor
+ :If 0≠⊃⍴failedtests
+⍝    ⎕OFF 11
+ :Else
+⍝    ⎕OFF
+ :EndIf
