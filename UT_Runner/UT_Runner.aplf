@@ -43,7 +43,9 @@
     :EndTrap
  :EndFor
  :If 0≠⊃⍴failedtests
+    _out(⍕⊃⍴failedtests),' test(s) FAILED'
 ⍝    ⎕OFF 11
  :Else
+    _out(⍕⊃⍴testfunctions),' test(s) OK'
 ⍝    ⎕OFF
  :EndIf
