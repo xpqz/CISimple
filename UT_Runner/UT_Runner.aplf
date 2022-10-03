@@ -15,7 +15,7 @@
  _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}
  _fixfiles←{0=⊃⍴⍵:⍵ ⋄ ⊃,/2 #.⎕FIX¨(⊂'file://'),¨⍵}
  _out←{⍺←'' ⋄ ⎕TS ⍺ ⍵}
- _off←{'Development'≡⊃⌽'.'⎕WG'APLVersion':0 0⍴'' ⋄ ⍵=0:⎕OFF ⋄ ⎕OFF ⍵}
+ _off←{'Development'≡⊃⌽'.'⎕WG'APLVersion':0 0⍴'' ⋄ ⍵=0:⎕OFF ⋄ ⎕OFF (⍵)}
 
 ⍝_________________________________
 ⍝ ... Load main (application) code
