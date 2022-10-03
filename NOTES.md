@@ -6,7 +6,7 @@ set TestFolder=c:\repos\CISimple\src\Test
 
 \\Dk01sv7031\apli-prd\DEV\APLI-PRD\Bin\scd.exe -x -single
 
- +2 #.⎕FIX 'file://','C:\repos\CISimple\UT_Runner\','UT_Runner.aplf'
+ +2 #.⎕FIX 'file://C:\repos\CISimple\UT_Runner\UT_Runner.aplf'
 
 Build Docker image:
   
