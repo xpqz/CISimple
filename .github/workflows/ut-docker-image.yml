@@ -14,5 +14,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ut_runner:$(date +%s)
+    - name: Build the Docker image and run tests
+      run: docker run -v ./src/Main:/main -v ./src/Test:/test $(docker build . --file Dockerfile)
