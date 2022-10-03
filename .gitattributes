@@ -1,1 +1,5 @@
+# Normalize EOL on all text files
+* text=auto
+
+# Classify *.apl? as APL code in GitHub highlighting
 *.apl? linguist-language=APL
