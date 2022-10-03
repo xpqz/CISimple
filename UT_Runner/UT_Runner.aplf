@@ -1,4 +1,4 @@
-UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfiles;testfolder;testfunctions;testfunction;failedtests
+ UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfiles;testfolder;testfunctions;testfunction;failedtests;_getenv;_out;_off;dmx
 ⍝0: Simple Unit Test runner written in pure APL no extras allowed.
 ⍝ ==================================================================================
 ⍝ ... Function expects environment variables poining to
@@ -7,14 +7,15 @@ UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfi
 ⍝ ...    TestFolder: Load all test functions (with the extension) '*.aplt'.
 ⍝ ...                Folder and subfodlers are scanned
 ⍝ ==================================================================================
- _getenv←{+2 ⎕NQ # 'GetEnvironment' ⍵}
- mainfolder←_getenv 'MainFolder'
+ _getenv←{+2 ⎕NQ #'GetEnvironment'⍵}
+ mainfolder←_getenv'MainFolder'
 
- testfolder←_getenv 'TestFolder'
+ testfolder←_getenv'TestFolder'
 
- _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse'1)⊢⍺,'/*.',⍵}
- _fixfiles←{⊃,/2 #.⎕FIX¨(⊂'file://'),¨⍵}
- _out←{⍺←'' ⋄ ⍺ ⎕TS ⍵}
+ _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}
+ _fixfiles←{0=⊃⍴⍵:⍵ ⋄ ⊃,/2 #.⎕FIX¨(⊂'file://'),¨⍵}
+ _out←{⍺←'' ⋄ ⎕TS ⍺ ⍵}
+ _off←{'Development'≡⊃⌽'.'⎕WG'APLVersion':'' ⋄ ⍵=0:'⎕OFF' ⋄ '⎕OFF ',⍕⍵}
 
 ⍝_________________________________
 ⍝ ... Load main (application) code
@@ -30,7 +31,7 @@ UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfi
 
  failedtests←0⍴''⍬
 
- _out'Executing ',(⍕⊃⍴testfunctions),' tests'
+ _out'Executing ',(⍕⊃⍴testfunctions),' test(s)'
  :For testfunction :In testfunctions
     testfunction _out'Executing'
     :Trap 0
@@ -43,7 +44,10 @@ UT_Runner;_fixfiles;_loadfiles;mainfiles;mainfolder;mainfunctions;recurse;testfi
     :EndTrap
  :EndFor
  :If 0≠⊃⍴failedtests
-⍝    ⎕OFF 11
+    _out(⍕⊃⍴failedtests),' test(s) FAILED'
+    _off 11
  :Else
-⍝    ⎕OFF
+    _out(⍕⊃⍴testfunctions),' test(s) OK'
+    _off 0
  :EndIf
+ _out'Run Ended'

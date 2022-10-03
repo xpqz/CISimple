@@ -1,0 +1,14 @@
+ testInputBundleDiscount_Buy_Get
+⍝ Validate input format for Discount specification
+
+ specification←'Buy one, get one free'
+
+ ok←InputBundleDiscount specification
+
+ ⍎(~ok)/'⎕SIGNAL 99'
+
+ specification←'Buy two get one free'
+
+ ok←InputBundleDiscount specification
+
+ ⍎(~ok)/'⎕SIGNAL 99'

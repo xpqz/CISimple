@@ -1,0 +1,55 @@
+ ok←InputBundleDiscount bundlediscount;_m;inputtest;numbers;_skip;foundnumber;_d;buynumber;getnumber;parts;foundpart;buypart;getpart;match
+ ⍝ ... Assume that bundle discount either is in the form
+ ⍝ 'Buy <number-as-text>[ ,}]* get <number-as-text> free'
+ ⍝ 'Buy <part>[ ,}]* get <part> at <pct>%'
+ ⍝
+ ⍝ Return ok = true for valid string
+
+ _m←{⍺≡(⊃⍴⍺)↑⍵}
+ _d←{(⊃⍴⍺)↓⍵}
+ _skip←{(∨\~⍵∊' ,')/⍵}
+
+ ok←0
+
+ inputtest←⎕C bundlediscount
+ numbers←'one' 'two' 'three' 'four'
+ :If 'buy'_m inputtest
+    inputtest←_skip'buy'_d inputtest
+    foundnumber←numbers _m¨⊂inputtest
+ :AndIf ∨/foundnumber
+ ⍝__________________________________
+ ⍝ ... Validating buy / get pattern:
+ ⍝¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    buynumber←⊃foundnumber/numbers
+    inputtest←_skip buynumber _d inputtest
+    :If 'get'_m inputtest
+       inputtest←_skip'get'_d inputtest
+       foundnumber←numbers _m¨⊂inputtest
+    :AndIf ∨/foundnumber
+       getnumber←⊃foundnumber/numbers
+       inputtest←_skip getnumber _d inputtest
+    :AndIf (0=⊃⍴inputtest)∨inputtest≡'free'
+       ok←1
+    :EndIf
+ :Else
+ ⍝____________________________________________
+ ⍝ ... Validating buy one get another pattern:
+ ⍝¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    parts←⎕C GetParts
+    foundpart←parts _m¨⊂inputtest
+    :If ∨/foundpart
+       buypart←⊃foundpart/parts
+       inputtest←_skip buypart _d inputtest
+    :AndIf 'get'_m inputtest
+       inputtest←_skip'get'_d inputtest
+       foundpart←parts _m¨⊂inputtest
+    :AndIf ∨/foundpart
+       getpart←⊃foundpart/parts
+       inputtest←_skip getpart _d inputtest
+       :If 0=⊃⍴inputtest
+          ok←1
+       :Else
+          ok←0≠⊃⍴('at [0-9]+%'⎕S'\0')inputtest
+       :EndIf
+    :EndIf
+ :EndIf

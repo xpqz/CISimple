@@ -1,0 +1,8 @@
+ testInputBundleDiscount_BuyOne_GetPart_Fail
+⍝ Validate input format for Discount specification
+
+ specification←'Buy one, get pants'
+
+ ok←InputBundleDiscount specification
+
+ ⍎(ok)/'⎕SIGNAL 99'
