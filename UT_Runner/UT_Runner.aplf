@@ -49,3 +49,4 @@
     _out(⍕⊃⍴testfunctions),' test(s) OK'
 ⍝    ⎕OFF
  :EndIf
+    _out'Run Ended'
