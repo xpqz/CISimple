@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ut_runner:$(date +%s)
     - name: Run the unit tests
-      run: docker run -v ./src/Main:/main -v ./src/Test:/test ut_runner 
+      run: docker run -v ./src/Main:/main -v ./src/Test:/test ut_runner:$(date +%s) 
