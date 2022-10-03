@@ -1,0 +1,8 @@
+ testInputBundleDiscount_Member
+
+
+⍝res←InputBundleDiscount specification
+
+⍝specification←'Get 10% off if you''re a member'
+
+⍝res←InputBundleDiscount specification
