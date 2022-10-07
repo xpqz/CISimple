@@ -1,10 +1,7 @@
-Run from SimCorp Dimension:
 
-set MainFolder=c:\repos\CISimple\src\Main
+2 ⎕FIX¨(⊂'file://'),¨'c:\repos\CISimple\src'{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}'aplt⌈'
 
-set TestFolder=c:\repos\CISimple\src\Test
-
-\\Dk01sv7031\apli-prd\DEV\APLI-PRD\Bin\scd.exe -x -single
+2 ⎕FIX¨(⊂'file://'),¨'c:\repos\CISimple\src'{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}'aplf'
 
  +2 #.⎕FIX 'file://C:\repos\CISimple\UT_Runner\UT_Runner.aplf'
 
