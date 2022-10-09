@@ -1,3 +1,5 @@
+]demo c:\repos\CISimple\Demo\Demo.script
+
 
 2 ⎕FIX¨(⊂'file://'),¨'c:\repos\CISimple\src'{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}'aplf'
 

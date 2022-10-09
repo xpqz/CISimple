@@ -1,0 +1,7 @@
+↑2 ⎕FIX¨(⊂'file://'),¨'c:\repos\CISimple\src'{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}'aplf'
+InputBundleDiscount 'buy one get one for free'
+InputBundleDiscount 'buy one get one free'
+InputBundleDiscount 'buy five get one free'
+↑2 ⎕FIX¨(⊂'file://'),¨'c:\repos\CISimple\src'{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}'aplt'
+↑2 ⎕FIX 'file://c:\repos\CISimple\UT_Runner\UT_Runner.aplf'
+ UT_Runner 
