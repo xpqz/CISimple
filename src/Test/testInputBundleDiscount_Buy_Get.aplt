@@ -12,3 +12,9 @@
  ok←InputBundleDiscount specification
 
  ⍎(~ok)/'⎕SIGNAL 99'
+
+ specification←'Buy five two get two free'
+
+ ok←InputBundleDiscount specification
+
+ ⍎(~ok)/'⎕SIGNAL 99'
