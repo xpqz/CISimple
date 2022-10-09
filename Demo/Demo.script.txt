@@ -1,4 +1,6 @@
+⎕←'------------------'
 ⎕←'Load "Application"'
+⎕←'------------------'
 ↑2 ⎕FIX¨(⊂'file://'),¨'c:\repos\CISimple\src'{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}'aplf'
 ⎕←'-----------------'
 ⎕←'Run "Application"'
