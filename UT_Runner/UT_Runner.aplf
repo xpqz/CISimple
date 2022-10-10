@@ -31,7 +31,6 @@ testfolder←_getenv'TestFolder'
  testfunctions←_fixfiles testfiles
 
  failedtests←0⍴''⍬
- _out ⍕incontainer
  _out'Executing ',(⍕⊃⍴testfunctions),' test(s)',incontainer/' in container'
  :For testfunction :In testfunctions
     testfunction _out'Executing'
