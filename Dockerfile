@@ -13,6 +13,7 @@ VOLUME [ "/main", "/test" ]
 
 ENV MainFolder /main
 ENV TestFolder /test
+ENV RunInContainer TRUE
 ENV LOAD /tools/UT_Runner/UT_Runner.aplf
 
 USER dyalog

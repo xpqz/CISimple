@@ -8,15 +8,16 @@
 ⍝ ...                Folder and subfodlers are scanned
 ⍝ ==================================================================================
  _getenv←{+2 ⎕NQ #'GetEnvironment'⍵}
- mainfolder←_getenv'MainFolder'
-
- testfolder←_getenv'TestFolder'
-
  _loadfiles←{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}
  _fixfiles←{0=⊃⍴⍵:⍵ ⋄ ⊃,/2 #.⎕FIX¨(⊂'file://'),¨⍵}
  _out←{⍺←'' ⋄ ⎕TS ⍺ ⍵}
- _off←{'Development'≡⊃⌽'.'⎕WG'APLVersion':0 0⍴'' ⋄ ⍵=0:⎕OFF ⋄ ⎕OFF (⍵)}
 
+incontainer←'TRUE'≡_getenv'RunInContainer'
+ _off←{~incontainer:0 0⍴'' ⋄ ⍵=0:⎕OFF ⋄ ⎕OFF (⍵)}
+
+mainfolder←_getenv'MainFolder'
+testfolder←_getenv'TestFolder'
+ 
 ⍝_________________________________
 ⍝ ... Load main (application) code
 ⍝¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
@@ -31,7 +32,7 @@
 
  failedtests←0⍴''⍬
 
- _out'Executing ',(⍕⊃⍴testfunctions),' test(s)'
+ _out'Executing ',(⍕⊃⍴testfunctions),' test(s)',incontainer/' in container'
  :For testfunction :In testfunctions
     testfunction _out'Executing'
     :Trap 0
