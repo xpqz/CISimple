@@ -13,8 +13,8 @@
 
  ⍎(~ok)/'⎕SIGNAL 99'
 
- specification←'Buy five two get two free'
+ ⍝specification←'Buy five get two free'
 
- ok←InputBundleDiscount specification
+ ⍝ok←InputBundleDiscount specification
 
- ⍎(~ok)/'⎕SIGNAL 99'
+ ⍝⍎(~ok)/'⎕SIGNAL 99'
