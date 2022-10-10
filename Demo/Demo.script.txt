@@ -1,6 +1,9 @@
 ⎕←'------------------'
 ⎕←'Load "Application"'
 ⎕←'------------------'
+ font←⎕SE.FontObj
+ (2⊃font)←24
+ ⎕SE.FontObj←font
 ↑2 ⎕FIX¨(⊂'file://'),¨'c:\repos\CISimple\src'{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}'aplf'
 ⎕←'-----------------'
 ⎕←'Run "Application"'
@@ -9,8 +12,8 @@
 InputBundleDiscount 'buy one get one free'
 InputBundleDiscount 'buy one get one for free'
 InputBundleDiscount 'buy five get one free'
-⎕←'Load Tests'
+⍝ 'Load Tests'
 ↑2 ⎕FIX¨(⊂'file://'),¨'c:\repos\CISimple\src'{⊃⎕NINFO⍠('Wildcard' 1)('Recurse' 1)⊢⍺,'/*.',⍵}'aplt'
-⎕←'Load Tests Runner'
+⍝ 'Load Tests Runner'
 ↑2 ⎕FIX 'file://c:\repos\CISimple\UT_Runner\UT_Runner.aplf'
  UT_Runner 
