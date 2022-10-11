@@ -12,7 +12,7 @@
  ok←0
 
  inputtest←⎕C bundlediscount
- numbers←'one' 'two' 'three' 'four'
+ numbers←'one' 'two' 'three' 'four' 'five'
  :If 'buy'_m inputtest
     inputtest←_skip'buy'_d inputtest
     foundnumber←numbers _m¨⊂inputtest
