@@ -7,7 +7,7 @@ RUN mkdir /main /test /tools && \
 
 RUN apt-get update && apt-get install -y git 
 
-RUN git clone https://github.com/stampes/CISimple /tools
+RUN git clone https://github.com/xpqz/CISimple /tools
 
 VOLUME [ "/main", "/test" ]
 
